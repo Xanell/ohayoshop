@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohayo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body>
+    <section style="background-color: #1a1a1a;">
+        <nav class="container mx-auto flex items-center justify-between py-4 bg-dark">
+            <div>
+                <a href="/"><img src="/img/header-logo.png" alt="logo"></a>
+            </div>
+            <div>
+                <ul class="flex items-center">
+                    <li class="ml-6" style="color: #dcdcdc;"><a href="/">Главная</a></li>
+                    <li class="ml-6" style="color: #dcdcdc;"><a href="/menu">Товары</a></li>
+                    <% if(user) { %>
+                    <li class="ml-6" style="color: #dcdcdc;">
+                        <form id="account" method="POST">
+                            <a href="/customer/orders">Аккаунт</a>
+                        </form>
+                    </li>
+                    <li class="ml-6" style="color: #dcdcdc;">
+                        <form id="logout" action="/logout" method="POST">
+                            <a onclick="document.getElementById('logout').submit()" href="#">Выйти</a>
+                        </form>
+                    </li>
+                    <% } else { %>
+                    <li class="ml-6" style="color: #dcdcdc;"><a href="/register">Регистрация</a></li>
+                    <li class="ml-6" style="color: #dcdcdc;"><a href="/login">Вход</a></li>
+                    <% } %>
+                    <li class="ml-6" style="color: #dcdcdc;"><a href="/cart" class="inline-block px-4 py-2 rounded-full flex items-center">
+                            <span id="cartCounter"
+                                class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
+                            <img src="/img/cart.png" alt="">
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <%- body %>
+    <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
