@@ -1,7 +1,7 @@
 {
-  "name": "realtime-pizza",
+  "name": "ohayo",
   "version": "1.0.0",
-  "description": "This is sushi app",
+  "description": "sellers app",
   "main": "index.js",
   "author": "Xanell",
   "scripts": {
